@@ -1,5 +1,7 @@
 package com.awesome.pro.db.redis.client;
 
+import java.util.Set;
+
 import redis.clients.jedis.Jedis;
 
 import com.awesome.pro.pool.WrappedResource;
@@ -45,6 +47,45 @@ public class WrappedRedisClient implements WrappedResource<Jedis> {
 	@Override
 	public Jedis getResource() {
 		return jedis;
+	}
+
+	/**
+	 * @param key Key to be set.
+	 * @param value Corresponding value in pair.
+	 */
+	public final void storeData(String key, String value) {
+		jedis.set(key, value);
+	}
+
+	/**
+	 * @param key Key to be queried for.
+	 * @return Corresponding value stored in Redis.
+	 */
+	public final String getData(String key) {
+		return jedis.get(key);
+	}
+
+	/**
+	 * @param key Name of unique set.
+	 * @param data Data to be added.
+	 */
+	public final void storeOrAddUniqueData(final String key, final String... data) {
+		jedis.sadd(key, data);
+	}
+
+	/**
+	 * @param key Name of unique set.
+	 */
+	public final int getUniqueCount(final String key) {
+		return Integer.parseInt(jedis.scard(key).toString());
+	}
+
+	/**
+	 * @param pattern Pattern to match for.
+	 * @return Set of matching keys.
+	 */
+	public final Set<String> queryKeys(String pattern) {
+		return jedis.keys(pattern);
 	}
 
 }
