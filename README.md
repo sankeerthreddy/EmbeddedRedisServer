@@ -16,3 +16,7 @@ client.getResource().get("key1");
 RedisClientPool.returnRedisClient(client);
 RedisManager.stop();
 ````
+
+Sample configuration file: ![redis.properties](http://github.opslab.sv2.tellme.com/OnlineAutomation/EmbeddedRedisServer/raw/master/conf/redis.properties)
+It doesn't have to be named redis.properties.
+As long as the parameter names are same, any file could be specified during initialization.
