@@ -28,6 +28,7 @@ public class SanityTest {
 
 	@AfterClass
 	public void tearDown() {
+		RedisClientPool.returnRedisClient(client);
 		RedisManager.stop();
 	}
 

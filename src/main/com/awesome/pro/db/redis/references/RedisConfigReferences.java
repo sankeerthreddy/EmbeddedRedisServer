@@ -18,6 +18,9 @@ public final class RedisConfigReferences {
 	public static final String REDIS_HOST = "localhost";
 	private static int REDIS_PORT = -1;
 
+	public static final String NAMESPACE_SEPARATOR = "||";
+	public static final char QUERY_WILD_CARD = '*';
+
 	/**
 	 * @param Redis configuration file.
 	 * @return Redis port configured in property file.
