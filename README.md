@@ -1,0 +1,2 @@
+# EmbeddedRedisServer
+Embedded redis server
